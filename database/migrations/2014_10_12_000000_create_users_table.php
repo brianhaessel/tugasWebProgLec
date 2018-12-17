@@ -35,7 +35,7 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('post_comments');
         Schema::dropIfExists('posts');
-        Schema::dropIfExists('follow_categories');
+        Schema::dropIfExists('follow_brands');
         Schema::dropIfExists('users');
     }
 }

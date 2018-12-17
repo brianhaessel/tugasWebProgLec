@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateFollowCategoriesTable extends Migration
+class CreateFollowBrandsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateFollowCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('follow_categories', function (Blueprint $table) {
+        Schema::create('follow_brands', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('brand_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
         });
     }
 
@@ -31,6 +31,6 @@ class CreateFollowCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('follow_categories');
+        Schema::dropIfExists('follow_brands');
     }
 }

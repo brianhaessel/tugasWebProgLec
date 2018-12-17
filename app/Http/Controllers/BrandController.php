@@ -58,7 +58,7 @@ class BrandController extends Controller
             $brand->name = $request->name;
             $brand->save();
         
-        return redirect()->route('manage_category');
+        return redirect()->route('manage_brand');
     }
 
     public function deleteBrand(Brand $brand){
@@ -110,6 +110,5 @@ class BrandController extends Controller
     {
         //
     }
-    public function categories(){
-    }
+    
 }

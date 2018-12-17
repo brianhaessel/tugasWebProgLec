@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     {
         // Master
         $this->call(UserSeeder::class);
-        $this->call(CategorySeeder::class);
+        $this->call(BrandSeeder::class);
         
         // ----
         $this->call(PostSeeder::class);

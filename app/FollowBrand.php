@@ -8,7 +8,7 @@ class FollowBrand extends Model
 {
 
     protected $fillable = [
-        'category_id'
+        'brand_id'
     ];
     
     public function user() {

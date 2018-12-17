@@ -8,11 +8,11 @@ class Brand extends Model
 {
     
     public function posts() {
-        return $this->hasMany('App\Post', 'post_category_details');
+        return $this->hasMany('App\Post', 'post_brand_details');
     }
 
     public function followedBy() {
-        return $this->belongsToMany('App\User', 'follow_categories');
+        return $this->belongsToMany('App\User', 'follow_brands');
     }
 
 }
