@@ -66,47 +66,14 @@ class BrandController extends Controller
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Brand  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Brand $category)
+   
+    public function update(Request $request, Brand $brand)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Brand  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Brand $category)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Brand  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Brand $category)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Brand  $category
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Brand $category)
+    
+    public function destroy(Brand $brand)
     {
         //
     }

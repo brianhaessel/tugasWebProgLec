@@ -46,20 +46,20 @@ class UserController extends Controller
         return view('profile', compact('user'));
     }
     public function editBrand($id){
-        $category = Brand::find($id);
-        return view('updateBrand', compact('category'));
+        $brand = Brand::find($id);
+        return view('updateBrand', compact('brand'));
     }
 
     public function followedBrand(){
         $user = Auth::user();
-        $categories = Brand::all();
+        $brands = Brand::all();
         $followed_ids = [];
 
-        foreach ($user->followedCategories as $cat) {
+        foreach ($user->followedBrands as $cat) {
             array_push($followed_ids, $cat->id);
         }
 
-        return view('followedBrand',compact('user', 'categories', 'followed_ids'));
+        return view('followedBrand',compact('user', 'brands', 'followed_ids'));
     }
     
     public function manageUser(){
@@ -113,19 +113,19 @@ class UserController extends Controller
 
 
     public function updateFollowBrand(Request $request) {
-        $categories = Brand::all();
+        $brands = Brand::all();
 
-        foreach ($categories as $cat) {
+        foreach ($brands as $cat) {
             $checked = $request->input('cat'.$cat->id);
 
             if ($checked) {
-                $existingData = FollowBrand::firstOrNew(['category_id' => $cat->id, 'user_id' => Auth::user()->id]);
+                $existingData = FollowBrand::firstOrNew(['brand_id' => $cat->id, 'user_id' => Auth::user()->id]);
                 $existingData->user_id = Auth::user()->id;
-                $existingData->category_id = $cat->id;
+                $existingData->brand_id = $cat->id;
                 $existingData->save();
             } else {
                 
-                $existingData = FollowBrand::where('category_id', $cat->id)->where('user_id', Auth::user()->id)->first();
+                $existingData = FollowBrand::where('brand_id', $cat->id)->where('user_id', Auth::user()->id)->first();
                 if ($existingData != null) {
                     $existingData->delete();
                 }
@@ -142,7 +142,4 @@ class UserController extends Controller
         return redirect()->route('manage_user');
     }
 
-    // public function manageCategory(){
-    //     return view('manageCategories');
-    // }
 }

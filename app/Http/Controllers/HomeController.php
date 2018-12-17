@@ -44,15 +44,15 @@ class HomeController extends Controller
     }
 
     public function followedBrands() {
-        $categories = Auth::user()->followedCategories;
-        $categoriesIds = [];
+        $brands = Auth::user()->followedBrands;
+        $brandsIds = [];
 
-        foreach ($categories as $cat) {
-            array_push($categoriesIds, $cat->id);
+        foreach ($brands as $cat) {
+            array_push($brandsIds, $cat->id);
         }
 
-        $posts = Post::whereHas('category', function($q) use ($categoriesIds) {
-            $q->whereIn('id', $categoriesIds);
+        $posts = Post::whereHas('brand', function($q) use ($brandsIds) {
+            $q->whereIn('id', $brandsIds);
         })->paginate(10);
 
 
@@ -64,16 +64,5 @@ class HomeController extends Controller
         return view('home', compact('posts'));
     }
 
-//     public function search(Request $request){
-//     $category = $request->input('category');
 
-//     //now get all user and services in one go without looping using eager loading
-//     //In your foreach() loop, if you have 1000 users you will make 1000 queries
-
-//     $users = User::with('services', function($query) use ($category) {
-//          $query->where('category', 'LIKE', '%' . $category . '%');
-//     })->get();
-
-//     return view('browse.index', compact('users'));
-// }
 }

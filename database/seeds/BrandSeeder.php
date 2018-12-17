@@ -15,11 +15,11 @@ class BrandSeeder extends Seeder
      */
     public function run()
     {
-        $this->newCategory('Toyota');
-        $this->newCategory('Honda');
-        $this->newCategory('Ferrari');
-        $this->newCategory('Mercedes-Benz');
-        $this->newCategory('BMW');
+        $this->newBrand('Toyota');
+        $this->newBrand('Honda');
+        $this->newBrand('Ferrari');
+        $this->newBrand('Mercedes-Benz');
+        $this->newBrand('BMW');
 
         $users = User::all();
         Brand::all()->each(function($brand) use($users) {
@@ -29,7 +29,7 @@ class BrandSeeder extends Seeder
         });
     }
 
-    private function newCategory(string $name) {
+    private function newBrand(string $name) {
         $brand = new Brand();
         $brand->name = $name;
         $brand->save();

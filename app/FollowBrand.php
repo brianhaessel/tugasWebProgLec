@@ -15,7 +15,7 @@ class FollowBrand extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function category() {
+    public function brand() {
         return $this->belongsTo('App\Brand');
     }
 

@@ -29,8 +29,8 @@ class PostController extends Controller
    
     }
     public function add(){
-        $categories = Brand::all();
-        return view('insertpost', compact('categories'));
+        $brands = Brand::all();
+        return view('insertpost', compact('brands'));
     }
     public function addComment(Request $request){
         $post_comments = new PostComment();
@@ -54,7 +54,7 @@ class PostController extends Controller
             'caption' => 'required',
             'price' => 'integer',
             'image' => 'required|mimes:jpeg,png,jpg',
-            'category' => 'required'
+            'brand' => 'required'
         ]);
 
         $storeImage = $request->file('image')->storeAs('', $request->file('image')->getClientOriginalName().time(), 'public');
@@ -66,7 +66,7 @@ class PostController extends Controller
         $post->price = $request->price;
         $post->image = $storeImage;
         $post->user_id = Auth::user()->id;
-        $post->category_id = Brand::where('name', $request->category)->first()->id;
+        $post->brand_id = Brand::where('name', $request->brand)->first()->id;
         $post->save();
 
         return redirect('/myposts');
