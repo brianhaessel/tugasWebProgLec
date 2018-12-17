@@ -48,9 +48,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:255|min:5',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'password' => 'required|string|min:8|confirmed|alpha_num',
+            'gender' => 'required',
+            'image' => 'required|mimes:jpeg,png,jpg'
         ]);
     }
 
@@ -62,10 +64,23 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+
+        $profileImage = $request->file('image');
+        // $profileImageSaveAsName = time()  . "-profile.";
+
+        // $upload_path = 'public';
+        $profile_image_url = $profileImage->getClientOriginalName() . time();
+        $success = $profileImage->storeAs('public', $profile_image_url);
+        
+     
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'gender' => $request->gender,
+            'profile_picture' => $profile_image_url,
         ]);
+
     }
 }

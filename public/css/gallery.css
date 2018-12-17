@@ -1,0 +1,74 @@
+.imageShowH {
+ height: 100%;
+
+ margin: auto;
+ position: relative;
+ top: 0px;
+ left: 0px;
+ 
+}
+
+.contentSeg {
+ margin: auto;
+ height: auto;
+ display: flex;
+ flex-wrap: wrap;
+ padding-top: 10px;
+ justify-content: center;
+ text-align: center;
+}
+
+.post {
+ background-position: center;
+ padding: 5px;
+ 
+ display: inline-block;
+}
+
+.pp {
+	border-radius: 50%;
+}
+
+.postDet {
+	margin: auto;
+	width: 70%;
+	background-color: #DDDDDD;
+	padding: 10px;
+}
+
+.postImage {
+	text-align: center;
+}
+
+.postImage img {
+	max-width: 100%;
+}
+
+.comment {
+	background-color: white;
+	padding: 4px;
+	border-bottom: 1px gray solid;
+}
+
+.perTransaction {
+	padding: 10px;
+	padding-bottom: 50px;
+}
+
+.profileTable {
+	margin:auto;
+}
+
+.fullTable {
+	margin: auto;
+	width: 100%;
+}
+
+.fullTable td {
+	padding: 8px;
+}
+
+.tableHeader {
+	font-weight: bold;
+	border-bottom: 1px black solid;
+}

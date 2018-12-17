@@ -12,6 +12,9 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+
+  @yield('extraHead')
 </head>
 <body>
     <div id="app">
@@ -28,53 +31,96 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    {{date("l jS \of F Y h:i:s A")}}
+
+
+                    <a class="navbar-brand" href="{{ url('/home') }}">
+                        Rent-A-Car
+                        <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
+                    <form action="{{url('/home/search')}}" method="GET">
+                        <input id="search" type="text" class="form-control" name="search" value="{{ old('search') }}" placeholder="Search car" required autofocus>
+                        <button type="submit">Search</button>
+                    </form>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
+                <!-- Left Side Of Navbar 
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                </ul>
+                -->
+                <!-- Right Side Of Navbar -->
+
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+
+                    @guest
+                        <li><a href="{{ route('login') }}">Login</a></li>
+                        <li><a href="{{ route('register') }}">Register</a></li>
+                    @else
+                        @can('isAdmin')
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    Manage <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
+                                        <a href="{{route('manage_user')}}">Users</a>
+                                        <a href="{{route('manage_brand')}}">Brands</a>
                                     </li>
                                 </ul>
                             </li>
-                        @endguest
-                    </ul>
-                </div>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                    View <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="{{route('all_transaction')}}">View All Transaction</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endcan
+                        <li><a href="{{ url('/cart') }}">Cart</a></li>
+                        <li><a href="{{ url('/myposts') }}">My Post</a></li>
+                        welcome, {{ Auth::user()->name }}
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="{{ url('/profile') }}">Profile</a>
+                                    <a href="{{route ('transaction_history')}}">Transaction History</a>
+                                    
+                                    <a href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    Logout
+                                    </a>
+                                    
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @endguest
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        @yield('content')
-    </div>
+    @yield('content')
+</div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
+<!-- Scripts -->
+<script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>
