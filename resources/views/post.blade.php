@@ -31,7 +31,7 @@
 		@endauth
 
 		<h2>{{ $post->title }}</h3>
-		<p>{{ $post->category->name }}</p>
+		<p>{{ $post->brand->name }}</p>
 		<div class="postImage">
 			<img src="{{ url('/storage/'.$post->image) }}" />
 		</div>

@@ -47,7 +47,7 @@ Route::middleware(['auth'])->group(function() {
 // Accessible by Admin
 Route::middleware(['admin'])->group(function() {
 	Route::get('/manageUser','UserController@manageUser')->name('manage_user');
-	Route::get('/manageBrand', 'BrandController@index')->name('manage_brand');
+	Route::get('/manageBrands', 'BrandController@index')->name('manage_brands');
 	Route::get('/allTransaction', 'TransactionController@allTransaction')->name('all_transaction');
 	Route::get('/addBrand','BrandController@addBrand')->name('add_brand');
 	Route::post('/insertBrand', 'BrandController@store')->name('insert_brand');

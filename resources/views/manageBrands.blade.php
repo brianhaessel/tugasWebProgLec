@@ -11,17 +11,17 @@
             <div class="contentSeg" id="postSection" >
             	<table class="fullTable">
             		<tr class="tableHeader">
-            			<td>Category ID</td>
-            			<td>Category Name</td>
+            			<td>Brand ID</td>
+            			<td>Brand Name</td>
             			<td colspan="2">Auth</td>
             		</tr>
-            		@foreach($categories as $category)
+            		@foreach($brands as $brand)
                     <tr>
-                        <td><div class="post" >{{ $category->id }}</div></td>
-                        <td>{{ $category->name }}</td>
-                        <td><a href="{{ route('edit_brand', [$category->id]) }}">Edit</a></td>
+                        <td><div class="post" >{{ $brand->id }}</div></td>
+                        <td>{{ $brand->name }}</td>
+                        <td><a href="{{ route('edit_brand', [$brand->id]) }}">Edit</a></td>
                         <td>
-                            <form id="delete-category" action="{{ route('delete_brand', [$category]) }}" method="POST">
+                            <form id="delete-brand" action="{{ route('delete_brand', [$brand]) }}" method="POST">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}
                                 <button type="submit" name="button_submit">

@@ -7,7 +7,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <!-- <a href="{{ url('/home') }}">Filter by My Followed Categories</a> -->
+            
             <div class="contentSeg" id="postSection" >
                 <table class="fullTable">
                     <tr class="tableHeader">

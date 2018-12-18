@@ -23,7 +23,7 @@
                     <br><br>
                     <div class="container">
                         <div class="row">
-                            <button type="submit" class="btn btn-primary">Profile</button> <a href="{{ url('/followedCategories') }}">Categories</a>
+                            <button type="submit" class="btn btn-primary">Profile</button> <a href="{{ url('/followedBrands') }}">Brands</a>
                         </div>
                     </div>
                 @elseif (Route::currentRouteName() == 'edit_user')

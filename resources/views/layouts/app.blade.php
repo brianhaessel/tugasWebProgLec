@@ -35,7 +35,7 @@
 
 
                     <a class="navbar-brand" href="{{ url('/home') }}">
-                        Rent-A-Car
+                        Buy-A-Car
                         <!-- {{ config('app.name', 'Laravel') }} -->
                     </a>
                     <form action="{{url('/home/search')}}" method="GET">
@@ -69,7 +69,7 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a href="{{route('manage_user')}}">Users</a>
-                                        <a href="{{route('manage_brand')}}">Brands</a>
+                                        <a href="{{route('manage_brands')}}">Brands</a>
                                     </li>
                                 </ul>
                             </li>

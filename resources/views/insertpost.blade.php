@@ -62,12 +62,12 @@
                                 @endif
                             </div>
                         </div>
-                        <div class="form-group{{ $errors->has('category') ? ' has-error' : '' }}">
-                            <label for="category" class="col-md-4 control-label">Category</label>
+                        <div class="form-group{{ $errors->has('brand') ? ' has-error' : '' }}">
+                            <label for="brand" class="col-md-4 control-label">Brand</label>
 
                             <div class="col-md-6">
-                                <select name="category" class="form-control">
-                                    @foreach ($categories as $cat)
+                                <select name="brand" class="form-control">
+                                    @foreach ($brands as $cat)
                                         <option value="{{ $cat->name }}">{{ $cat->name }}</option>
                                     @endforeach
                                 </select>

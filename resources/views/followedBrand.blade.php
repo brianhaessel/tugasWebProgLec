@@ -23,15 +23,15 @@
                 <div class="container">
                     <div class="row">
                	        <a href="{{ url('/profile') }}">Profile</a>
-                        <button type="submit" class="btn btn-primary">Categories</button>
+                        <button type="submit" class="btn btn-primary">Brands</button>
                     </div>
                     <br><br>
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <form class="form-horizontal" action="{{ route('updateFollowCategory') }}" method="post">
+                            <form class="form-horizontal" action="{{ route('updateFollowBrand') }}" method="post">
                                 {{ csrf_field() }}
 
-                                @foreach ($categories as $cat)
+                                @foreach ($brands as $cat)
                                     <div class="form-group">
                                         <label class="col-md-4 control-label">{{ $cat->name }}</label>
 
